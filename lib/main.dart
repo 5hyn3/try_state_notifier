@@ -42,6 +42,19 @@ class MyHomePage extends StatelessWidget {
               '${context.select((CounterState s) => s.count)}',
               style: Theme.of(context).textTheme.display1,
             ),
+            Icon(
+                context.select((CounterState s) => s.iconType.when(
+                    even: (describe) => Icons.add,
+                    odd: (describe, oldValue) => Icons.device_hub
+                ))
+            ),
+            Text(
+              '${context.select((CounterState s) => s.iconType.when(
+                  even: (describe) => describe,
+                  odd: (describe, oldValue) => '$describe : old $oldValue'
+              ))}',
+              style: Theme.of(context).textTheme.display1,
+            ),
           ],
         ),
       ),
